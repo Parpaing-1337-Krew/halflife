@@ -21,6 +21,7 @@
 // Font stuff
 
 #define NUM_GLYPHS 256
+#include "basetypes.h"
 
 typedef struct
 {
