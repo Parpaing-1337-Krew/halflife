@@ -24,7 +24,7 @@ CFG=mp - Win32 Release
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
-# PROP Scc_ProjName ""$/SDKSrc/Public/dlls", NVGBAAAA"
+# PROP Scc_ProjName ""$/SDK/Standard/dlls", NVGBAAAA"
 # PROP Scc_LocalPath "."
 CPP=cl.exe
 MTL=midl.exe
@@ -41,9 +41,10 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir ".\Releasemp"
 # PROP Intermediate_Dir ".\Releasemp"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /c
-# ADD CPP /nologo /G5 /MT /W3 /GX /Zi /O2 /I "..\dlls" /I "..\engine" /I "..\common" /I "..\pm_shared" /I "..\\" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "VALVE_DLL" /YX /FD /c
+# ADD CPP /nologo /G5 /MT /W3 /GX /Zi /O2 /I "..\dlls" /I "..\engine" /I "..\common" /I "..\pm_shared" /I "..\game_shared" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "VALVE_DLL" /D "CLIENT_WEAPONS" /YX /FD /c
 # SUBTRACT CPP /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -56,16 +57,6 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /map /debug /machine:I386 /def:".\mp.def"
 # SUBTRACT LINK32 /profile
-# Begin Custom Build - Copying to \half-life\mp\dlls
-TargetPath=.\Releasemp\mp.dll
-TargetName=mp
-InputPath=.\Releasemp\mp.dll
-SOURCE="$(InputPath)"
-
-"$(TargetName)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	copy $(TargetPath) \half-life\mp\dlls
-
-# End Custom Build
 
 !ELSEIF  "$(CFG)" == "mp - Win32 Debug"
 
@@ -80,7 +71,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir ".\debugmp"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MTd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /YX /c
-# ADD CPP /nologo /G5 /MTd /W3 /Gm /GX /ZI /Od /I "..\dlls" /I "..\engine" /I "..\common" /I "..\pm_shared" /I "..\\" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "VALVE_DLL" /FR /YX /FD /c
+# ADD CPP /nologo /G5 /MTd /W3 /Gm /GX /ZI /Od /I "..\dlls" /I "..\engine" /I "..\common" /I "..\pm_shared" /I "..\game_shared" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "VALVE_DLL" /D "CLIENT_WEAPONS" /FR /YX /FD /c
 # ADD BASE MTL /nologo /D "_DEBUG" /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -92,16 +83,6 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /debug /machine:I386
 # ADD LINK32 user32.lib advapi32.lib /nologo /subsystem:windows /dll /debug /machine:I386 /def:".\mp.def" /implib:".\Debug\mp.lib"
 # SUBTRACT LINK32 /profile
-# Begin Custom Build - Copying to \half-life\mp\dlls
-TargetPath=.\debugmp\mp.dll
-TargetName=mp
-InputPath=.\debugmp\mp.dll
-SOURCE="$(InputPath)"
-
-"$(TargetName)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	copy $(TargetPath) \half-life\mp\dlls
-
-# End Custom Build
 
 !ELSEIF  "$(CFG)" == "mp - Win32 Profile"
 
@@ -117,7 +98,7 @@ SOURCE="$(InputPath)"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /G5 /MT /W3 /GX /Zi /O2 /I "..\engine" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "QUIVER" /D "VOXEL" /D "QUAKE2" /D "VALVE_DLL" /YX /c
 # SUBTRACT BASE CPP /Fr
-# ADD CPP /nologo /G5 /MT /W3 /GX /Zi /O2 /I "..\dlls" /I "..\engine" /I "..\common" /I "..\pm_shared" /I "..\\" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "VALVE_DLL" /YX /FD /c
+# ADD CPP /nologo /G5 /MT /W3 /GX /Zi /O2 /I "..\dlls" /I "..\engine" /I "..\common" /I "..\pm_shared" /I "..\game_shared" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "VALVE_DLL" /D "CLIENT_WEAPONS" /YX /FD /c
 # SUBTRACT CPP /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -130,22 +111,6 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /debug /machine:I386 /def:".\mp.def"
 # SUBTRACT BASE LINK32 /profile
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /profile /debug /machine:I386 /def:".\mp.def"
-# Begin Custom Build - Copying to \half-life\mp\dlls
-TargetDir=.\Profilemp
-InputPath=.\Profilemp\mp.dll
-SOURCE="$(InputPath)"
-
-BuildCmds= \
-	copy $(TargetDir)\mp.dll \half-life\mp\dlls \
-	copy $(TargetDir)\mp.map \half-life\mp\dlls \
-	
-
-"\half-life\mp\dlls\mp.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-   $(BuildCmds)
-
-"\half-life\mp\dlls\mp.map" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-   $(BuildCmds)
-# End Custom Build
 
 !ENDIF 
 
@@ -168,15 +133,6 @@ SOURCE=.\animating.cpp
 # Begin Source File
 
 SOURCE=.\animation.cpp
-
-!IF  "$(CFG)" == "mp - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "mp - Win32 Debug"
-
-!ELSEIF  "$(CFG)" == "mp - Win32 Profile"
-
-!ENDIF 
-
 # End Source File
 # Begin Source File
 
@@ -285,6 +241,10 @@ SOURCE=.\hornet.cpp
 # Begin Source File
 
 SOURCE=.\hornetgun.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\common\interface.cpp
 # End Source File
 # Begin Source File
 
@@ -401,6 +361,10 @@ SOURCE=.\tripmine.cpp
 # Begin Source File
 
 SOURCE=.\util.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\game_shared\voice_gamemgr.cpp
 # End Source File
 # Begin Source File
 

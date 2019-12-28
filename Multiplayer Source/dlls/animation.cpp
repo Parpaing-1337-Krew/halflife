@@ -1,6 +1,6 @@
 /***
 *
-*	Copyright (c) 1999, 2000 Valve LLC. All rights reserved.
+*	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
 *	
 *	This product contains software technology licensed from Id 
 *	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
@@ -16,7 +16,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef bool BOOL;
+#include "../common/nowin.h"
+
+typedef int BOOL;
+#define TRUE	 1	
+#define FALSE	0
 
 // hack into header files that we can ship
 typedef int qboolean;
@@ -28,8 +32,6 @@ typedef unsigned char byte;
 #include "eiface.h"
 
 #include "studio.h"
-
-#include "../engine/studio.h"
 
 #ifndef ACTIVITY_H
 #include "activity.h"
