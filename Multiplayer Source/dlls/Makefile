@@ -1,7 +1,7 @@
 #
-# Half-Life StandardSDK 2.2 mp_i386.so Makefile for i386 Linux
+# Half-Life Standard SDK 2.3 mp_i386.so Makefile for i386 Linux
 #
-# October 2001 by Leon Hartwig (hartwig@valvesoftware.com)
+# October 2002 by Leon Hartwig (hartwig@valvesoftware.com)
 #
 
 DLLNAME=mp
