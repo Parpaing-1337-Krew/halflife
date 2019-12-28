@@ -29,6 +29,9 @@ FILE	*out[NUM_HULLS];
 int		c_tiny, c_tiny_clip;
 int		c_outfaces;
 
+qboolean	hullfile = false;
+static char qhullfile[ 256 ];
+
 qboolean	glview;
 qboolean	noclip;
 qboolean	onlyents;
@@ -728,7 +731,7 @@ int main (int argc, char **argv)
 	char	name[1024];
 	double		start, end;
 
-	printf( "qcsg.exe v2.6 (%s)\n", __DATE__ );
+	printf( "qcsg.exe v2.7 (%s)\n", __DATE__ );
 	printf ("---- qcsg ----\n" );
 
 	for (i=1 ; i<argc ; i++)
@@ -777,6 +780,12 @@ int main (int argc, char **argv)
 			strcpy( qproject, argv[ i + 1 ] );
 			i++;
 		}
+		else if (!strcmp(argv[i], "-hullfile"))
+		{
+			hullfile = true;
+			strcpy( qhullfile, argv[i + 1] );
+			i++;
+		}
 		else if (argv[i][0] == '-')
 			Error ("Unknown option \"%s\"", argv[i]);
 		else
@@ -784,10 +793,12 @@ int main (int argc, char **argv)
 	}
 
 	if (i != argc - 1)
-		Error ("usage: qcsg [-nowadtextures] [-wadinclude <name>] [-draw] [-glview] [-noclip] [-onlyents] [-proj <name>] [-threads #] [-v] mapfile");
+		Error ("usage: qcsg [-nowadtextures] [-wadinclude <name>] [-draw] [-glview] [-noclip] [-onlyents] [-proj <name>] [-threads #] [-v] [-hullfile <name>] mapfile");
 
 	SetThreadPriority(GetCurrentThread(),THREAD_PRIORITY_ABOVE_NORMAL);
 	start = I_FloatTime ();
+
+	CheckHullFile( hullfile, qhullfile );
 
 	ThreadSetDefault ();
 	SetQdirFromPath (argv[i]);
